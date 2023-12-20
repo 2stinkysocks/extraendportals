@@ -78,7 +78,7 @@ public final class ExtraEndPortals extends JavaPlugin implements Listener, Comma
     public void onEye(PlayerInteractEvent e) {
         // if you click the air, or you click a block that's either not an end portal, or is a filled end portal, then do the thing
         if(e.getItem() == null || (e.getItem().getType() != Material.ENDER_EYE)) return;
-        if(e.getAction() == Action.RIGHT_CLICK_AIR || (e.getAction() == Action.RIGHT_CLICK_BLOCK && (e.getClickedBlock().getType() != Material.END_PORTAL_FRAME || ((EndPortalFrame)e.getClickedBlock()).hasEye()))) {
+        if(e.getAction() == Action.RIGHT_CLICK_AIR || (e.getAction() == Action.RIGHT_CLICK_BLOCK && (e.getClickedBlock().getType() != Material.END_PORTAL_FRAME || (e.getClickedBlock() instanceof EndPortalFrame && ((EndPortalFrame)e.getClickedBlock()).hasEye())))) {
             Player p = e.getPlayer();
             e.setCancelled(true);
             e.setUseItemInHand(Event.Result.DENY);
